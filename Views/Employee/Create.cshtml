@@ -1,0 +1,55 @@
+﻿@model AuthCrudApp.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Employee</h4>
+<p>
+    <a asp-action="Create">Add New Employee</a>
+</p>
+@if (ViewBag.Message != null)
+{
+    <div style="width:50%; text-align:center;margin-left:300px;" class="alert alert-danger">@ViewBag.Message</div>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeeName" class="control-label"></label>
+                <input asp-for="EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeGender" class="control-label"></label>
+                <input asp-for="EmployeeGender" class="form-control" />
+                <span asp-validation-for="EmployeeGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeAge" class="control-label"></label>
+                <input asp-for="EmployeeAge" class="form-control" />
+                <span asp-validation-for="EmployeeAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeAddress" class="control-label"></label>
+                <input asp-for="EmployeeAddress" class="form-control" />
+                <span asp-validation-for="EmployeeAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

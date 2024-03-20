@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AuthCrudApp.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employee Information</h1>
+    @* {
+@if (ViewBag.login != null)
+
+    <div style="width:80%; text-align:center;margin-left:100px;" class="alert alert-danger">@ViewBag.login</div>
+} *@
+
+<p>
+    <a asp-action="Create">Add New Employee</a>
+</p>
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeGender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeAge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeAddress)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeGender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeAge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeAddress)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
+                        <a asp-action="Detail" asp-route-id="@item.EmployeeId">Detail</a> |
+                        <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h3>No Employee found</h3>
+}

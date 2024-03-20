@@ -1,0 +1,42 @@
+﻿@model AuthCrudApp.ViewModels.LoginModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container ">
+    <div style="width:50%;margin-left:200px;">
+        <h1 style="margin-top:100px; margin-left:15px;" class="container text-center d-flex justify-content-center align-items-center ">Login</h1>
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div style="width:80%; text-align:center;margin-left:100px;" class="alert alert-danger">@ViewBag.ErrorMessage</div>
+        }
+        <form style="margin-top:100px;" class="container d-flex justify-content-center flex-column " method="post">
+            <!-- Email input -->
+            <div class="form-outline d-flex justify-content-center mt-10">
+                <label style="margin-right:10px;" class="form-label" for="form2Example1">Username</label>
+                @Html.TextBoxFor(m=>m.Username,new{@class="form-control"})<br />
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <!-- Password input -->
+            <div class="form-outline  d-flex justify-content-center mb-4">
+                <label style="margin-right:10px;" class="form-label" for="form2Example2">Password</label>
+
+                @Html.PasswordFor(m=>m.Password,new{@class="form-control"})
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-outline d-flex justify-content-center  mt-10">
+                <button style="width:30%; margin-left:30px;" type="submit" class="btn btn-primary btn-block mb-4 ">Log in</button><br />
+
+            </div>
+            <p class="d-flex justify-content-center">
+               <span>A new user ? Please </span> <a style="text-align:center;" asp-controller="Register" asp-action="Index">Register User</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+
+
+
